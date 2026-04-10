@@ -8,6 +8,6 @@ import {
 const router = express.Router();
 
 router.post("/", handleGenerateURL);
+router.get("/dashboard/:shortId", handleAnalytics);
 router.get("/:shortId", handleGetURL);
-router.get("/dashboard", handleAnalytics);
 export default router;

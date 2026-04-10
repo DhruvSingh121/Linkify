@@ -8,6 +8,12 @@ async function handleGenerateURL(req, res) {
       error: "URL is Required",
     });
   }
+
+  const existing = await URL.findOne({ redirectURL: body.url });
+
+  if (existing) {
+    return res.json({ id: existing.shortId });
+  }
   const shortID = nanoid(7);
   await URL.create({
     shortId: shortID,
@@ -21,21 +27,29 @@ async function handleGenerateURL(req, res) {
 async function handleGetURL(req, res) {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
-    {
-      shortId,
-    },
+    { shortId: shortId },
     {
       $push: {
         visitHistory: { timestamps: Date.now() },
       },
     },
+    { new: true },
   );
+
+  if (!entry) {
+    return res.status(404).send("URL not found");
+  }
+
   res.redirect(entry.redirectURL);
 }
 
 async function handleAnalytics(req, res) {
   const shortId = req.params.shortId;
-  let result = await URL.findOneAndUpdate({ shortId });
+  const result = await URL.findOne({ shortId: shortId });
+
+  if (!result) {
+    return res.status(404).json({ error: "Not found" });
+  }
   return res.json({
     totalClicks: result.visitHistory.length,
     analytics: result.visitHistory,
