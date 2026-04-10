@@ -5,9 +5,9 @@ import urlRoute from "./routes/url.js";
 import { connectDB } from "./connect.js";
 const app = express();
 
-connectDB("mongodb://localhost:27017/linkify").then(
-  console.log("MongoDb Connected"),
-);
+connectDB(process.env.MONGO_URI)
+  .then(console.log("MongoDb Connected"))
+  .catch((err) => console.log("DB ERROR:", err));
 
 app.use(express.json());
 app.use("/url", urlRoute);
