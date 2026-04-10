@@ -1,0 +1,27 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend of Linkify - Dhruv Singh",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DhruvSingh121/Linkify.git"
+  },
+  "author": "Dhruv Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DhruvSingh121/Linkify/issues"
+  },
+  "homepage": "https://github.com/DhruvSingh121/Linkify#readme",
+  "dependencies": {
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.4.1",
+    "nanoid": "^5.1.7",
+    "nodemon": "^3.1.14"
+  }
+}
