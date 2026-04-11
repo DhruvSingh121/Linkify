@@ -1,0 +1,108 @@
+.hero {
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 50%, #7c3aed 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 140px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.hero__blob--1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(124, 58, 237, 0.4);
+  top: -80px;
+  left: -80px;
+}
+
+.hero__blob--2 {
+  width: 250px;
+  height: 250px;
+  background: rgba(79, 70, 229, 0.5);
+  bottom: -60px;
+  right: -60px;
+}
+
+.hero__badge {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+}
+
+.hero__heading {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  max-width: 700px;
+}
+
+.hero__subtext {
+  color: #c7d2fe;
+  font-size: 1rem;
+  margin-bottom: 35px;
+}
+
+.hero__btn-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.hero__btn--primary {
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  padding: 13px 32px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.hero__btn--primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.hero__btn--secondary {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  padding: 13px 32px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s;
+}
+
+.hero__btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 600px) {
+  .hero__btn-group {
+    flex-direction: column;
+    align-items: center;
+  }
+}

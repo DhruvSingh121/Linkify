@@ -1,0 +1,32 @@
+.stats-bar {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 40px 60px;
+  background: var(--white);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.07);
+}
+
+.stats-bar__item {
+  text-align: center;
+  padding: 10px 20px;
+}
+
+.stats-bar__value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.stats-bar__label {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .stats-bar {
+    padding: 30px 20px;
+    gap: 20px;
+  }
+}

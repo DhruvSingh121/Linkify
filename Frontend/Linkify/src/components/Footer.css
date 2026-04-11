@@ -1,0 +1,15 @@
+.footer {
+  background: var(--text-dark);
+  color: #94a3b8;
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 0.85rem;
+}
+
+.footer__logo {
+  color: var(--white);
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 8px;
+}
