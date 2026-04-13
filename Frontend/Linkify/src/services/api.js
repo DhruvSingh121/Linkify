@@ -1,12 +1,16 @@
-import axios from "axios";
+const BASE_URL = "https://linkify-djpr.onrender.com/url";
 
-const API = axios.create({
-  baseURL: "http://localhost:8080/url",
-});
+export const shortenURL = async (url) => {
+  const res = await fetch(BASE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url: url }),
+  });
 
-export const shortenURL = (data) => {
-  API.post("/", data);
-};
-export const getStats = () => {
-  API.get("/url/dashboard/:shortId");
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || "Server error");
+  }
+
+  return res.json();
 };

@@ -14,6 +14,7 @@
   font-weight: 700;
   color: var(--text-dark);
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .shorten-form__row {
@@ -61,23 +62,124 @@
   cursor: not-allowed;
 }
 
+/* ── Result Box ── */
 .shorten-form__result {
-  margin-top: 15px;
-  padding: 10px 18px;
-  background: #ede9fe;
-  border-radius: 10px;
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 0.9rem;
+  margin-top: 16px;
+  background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+  border: 1.5px solid #c4b5fd;
+  border-radius: 14px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  animation: slideUp 0.3s ease;
 }
 
-.shorten-form__result a {
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shorten-form__result-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+
+.shorten-form__result-icon {
+  width: 34px;
+  height: 34px;
+  background: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.shorten-form__result-texts {
+  overflow: hidden;
+}
+
+.shorten-form__result-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.shorten-form__result-link {
   color: var(--primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  max-width: 320px;
+}
+
+.shorten-form__result-link:hover {
   text-decoration: underline;
+}
+
+/* ── Copy Button ── */
+.shorten-form__copy {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 9px 18px;
+  border-radius: 25px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    background 0.2s,
+    transform 0.15s;
+  font-family: "Poppins", sans-serif;
+}
+
+.shorten-form__copy:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.shorten-form__copy--copied {
+  background: #059669;
+}
+
+/* ── Error Box ── */
+.shorten-form__error {
+  margin-top: 14px;
+  padding: 10px 18px;
+  background: #fee2e2;
+  border: 1.5px solid #fca5a5;
+  border-radius: 10px;
+  color: #dc2626;
+  font-size: 0.88rem;
+  font-weight: 500;
 }
 
 @media (max-width: 500px) {
   .shorten-form__row {
     flex-direction: column;
+  }
+  .shorten-form__result {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }
