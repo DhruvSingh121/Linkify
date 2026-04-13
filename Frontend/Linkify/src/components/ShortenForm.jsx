@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./ShortenForm.css";
 import { shortenURL } from "../services/api.js";
+import { toast } from "react-toastify";
 
 export default function ShortenForm() {
   const [url, setUrl] = useState("");
@@ -15,6 +16,7 @@ export default function ShortenForm() {
     setShortUrl("");
     setLoading(true);
 
+    const toastId = toast.loading("⏳ Server is preparing your link...");
     // add https:// if user forgot it
     let fullUrl = url;
     if (!fullUrl.startsWith("http://") && !fullUrl.startsWith("https://")) {
@@ -27,12 +29,28 @@ export default function ShortenForm() {
 
       if (data.id) {
         setShortUrl(`https://linkify-djpr.onrender.com/url/${data.id}`);
+        toast.update(toastId, {
+          render: "🎉 Your short link is ready!",
+          type: "success",
+          isLoading: false,
+          autoClose: 3000,
+        });
       } else {
-        setError("Unexpected response from server");
+        toast.update(toastId, {
+          render: "Unexpected response from server",
+          type: "error",
+          isLoading: false,
+          autoClose: 3000,
+        });
       }
     } catch (err) {
       console.error("Error:", err.message);
-      setError(err.message || "Cannot connect to server.");
+      toast.update(toastId, {
+        render: err.message || "Cannot connect to server.",
+        type: "error",
+        isLoading: false,
+        autoClose: 4000,
+      });
     }
 
     setLoading(false);
@@ -41,6 +59,7 @@ export default function ShortenForm() {
   const handleCopy = () => {
     navigator.clipboard.writeText(shortUrl);
     setCopied(true);
+    toast.success("📋 Link copied to clipboard!");
     setTimeout(() => setCopied(false), 2000);
   };
 
