@@ -11,7 +11,10 @@ export default function ShortenForm() {
   const [copied, setCopied] = useState(false);
 
   const handleShorten = async () => {
-    if (!url) return;
+    if (!url) {
+      toast.warning("Please enter a URL first!");
+      return;
+    }
     setError("");
     setShortUrl("");
     setLoading(true);
